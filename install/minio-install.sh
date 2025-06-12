@@ -23,7 +23,7 @@ chown minio-user:minio-user /home/minio-user
 mkdir -p /data
 chown minio-user:minio-user /data
 MINIO_ADMIN_USER="minioadmin"
-MINIO_ADMIN_PASSWORD="$(openssl rand -base64 18 | tr -dc 'a-zA-Z0-9' | cut -c1-13)"
+MINIO_ADMIN_PASSWORD="minioadmin"
 cat <<EOF >/etc/default/minio
 MINIO_ROOT_USER=${MINIO_ADMIN_USER}
 MINIO_ROOT_PASSWORD=${MINIO_ADMIN_PASSWORD}
