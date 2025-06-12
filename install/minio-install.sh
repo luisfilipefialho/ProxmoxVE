@@ -14,8 +14,8 @@ network_check
 update_os
 
 msg_info "Setup MinIO"
-RELEASE=$(curl -fsSL https://api.github.com/repos/minio/minio/releases/latest | grep '"tag_name"' | awk -F '"' '{print $4}')
-curl -fsSL "https://dl.min.io/server/minio/release/linux-amd64/minio" -o /usr/local/bin/minio
+RELEASE="RELEASE.2025-04-22T22-12-26Z"
+curl -fsSL "https://dl.min.io/server/minio/release/linux-amd64/archive/minio.RELEASE.2025-04-22T22-12-26Z" -o /usr/local/bin/minio
 chmod +x /usr/local/bin/minio
 useradd -r minio-user -s /sbin/nologin
 mkdir -p /home/minio-user
