@@ -27,7 +27,7 @@ function update_script() {
     msg_error "No ${APP} Installation Found!"
     exit
   fi
-  RELEASE=$(curl -fsSL https://api.github.com/repos/minio/minio/releases/latest | grep '"tag_name"' | awk -F '"' '{print $4}')
+  RELEASE="RELEASE.2025-04-22T22-12-26Z"
   if [[ ! -f /opt/${APP}_version.txt ]] || [[ "${RELEASE}" != "$(cat /opt/${APP}_version.txt)" ]]; then
     msg_info "Stopping ${APP}"
     systemctl stop minio
@@ -35,7 +35,7 @@ function update_script() {
 
     msg_info "Updating ${APP} to ${RELEASE}"
     mv /usr/local/bin/minio /usr/local/bin/minio_bak
-    curl -fsSL "https://dl.min.io/server/minio/release/linux-amd64/minio" -o $(basename "https://dl.min.io/server/minio/release/linux-amd64/minio")
+    curl -fsSL "https://dl.min.io/server/minio/release/linux-amd64/archive/minio.RELEASE.2025-04-22T22-12-26Z" -o $(basename "https://dl.min.io/server/minio/release/linux-amd64/archive/minio.RELEASE.2025-04-22T22-12-26Z")
     mv minio /usr/local/bin/
     chmod +x /usr/local/bin/minio
     echo "${RELEASE}" >/opt/${APP}_version.txt
